@@ -15,7 +15,7 @@ export default function() {
                     <div className="mb-6 md:mb-0">
                         <img
                             src="images/what_you_learn.jpg"
-                            className="rounded-lg "
+                            className="m-auto rounded-lg"
                             alt=""
                         />
                     </div>

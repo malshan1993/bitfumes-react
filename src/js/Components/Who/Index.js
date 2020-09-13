@@ -29,7 +29,7 @@ export default function Index() {
                         </p>
                     </div>
                     <a
-                        href
+                        href="#"
                         className="inline-block px-4 py-2 font-bold text-white align-middle bg-blue-600 rounded-full hover:bg-blue-700"
                     >
                         <span>View the 20 Apps</span>
@@ -46,11 +46,11 @@ export default function Index() {
                         </svg>
                     </a>
                 </div>
-                <div className="md:pl-8 lg:pl-24 md:w-1/2">
+                <div className="w-full md:pl-8 lg:pl-24 md:w-1/2">
                     <div className="mt-6 mt:mb-0">
                         <img
                             src="images/who_is_this_for.jpg"
-                            className="rounded-lg "
+                            className="m-auto rounded-lg"
                             alt=""
                         />
                     </div>

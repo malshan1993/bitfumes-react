@@ -46,8 +46,8 @@ export default function() {
                 </h1>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {features.map((feature) => {
-                    return <Feature value={feature} />;
+                {features.map((feature, index) => {
+                    return <Feature key={index} value={feature} />;
                 })}
             </div>
         </div>

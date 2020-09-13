@@ -36,11 +36,11 @@ export default function Index() {
                         </p>
                     </div>
                 </div>
-                <div className="md:pl-8 lg:pl-24 md:w-1/2">
+                <div className="w-full md:pl-8 lg:pl-24 md:w-1/2">
                     <div className="mt-6 mt:mb-0">
                         <img
                             src="images/sarthak.jpg"
-                            className="rounded-lg "
+                            className="m-auto rounded-lg"
                             alt=""
                         />
                     </div>

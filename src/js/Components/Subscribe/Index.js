@@ -4,7 +4,7 @@ export default function() {
     return (
         <div className="px-6 py-8 mt-10 bg-gray-800 rounded lg:px-20 lg:py-16 lg:mt-20">
             <div className="flex flex-wrap items-center">
-                <div className="md:pr-8 md:w-2/3">
+                <div className="w-full md:pr-8 md:w-2/3 ">
                     <h1 className="text-lg font-bold text-gray-100 lg:text-2xl">
                         In Depth Reactjs
                     </h1>
@@ -16,7 +16,7 @@ export default function() {
                         <p className="text-base font-medium leading-6 text-gray-100">
                             Get early discount &amp; latest news 👇
                         </p>
-                        <form action className="my-4">
+                        <form action="#" className="my-4">
                             <div>
                                 <input
                                     className="block w-full px-4 py-3 mb-3 leading-tight bg-gray-700 border border-gray-500 rounded-lg appearance-none focus:outline-none focus:bg-white"
@@ -53,11 +53,11 @@ export default function() {
                         </form>
                     </div>
                 </div>
-                <div className="md:w-1/3">
+                <div className="w-full md:w-1/3 ">
                     <div className="mt-6 mt:mb-0">
                         <img
                             src="images/news_letter.jpg"
-                            className="rounded-lg "
+                            className="m-auto rounded-lg"
                             alt=""
                         />
                     </div>

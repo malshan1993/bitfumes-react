@@ -28,7 +28,7 @@ export default function() {
                     A Practical Course that combine all React World
                 </p>
                 <a
-                    href
+                    href="#"
                     className="inline-block px-4 py-2 font-bold text-white align-middle bg-blue-600 rounded-full hover:bg-blue-700"
                 >
                     <span>Enroll to Course</span>

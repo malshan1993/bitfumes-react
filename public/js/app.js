@@ -28637,12 +28637,12 @@ function Index() {
     className: "text-blue-600 underline",
     href: "//github.com/sarthaksavvy"
   }, "open source package"), " ", "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "md:pl-8 lg:pl-24 md:w-1/2"
+    className: "w-full md:pl-8 lg:pl-24 md:w-1/2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mt-6 mt:mb-0"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "images/sarthak.jpg",
-    className: "rounded-lg ",
+    className: "m-auto rounded-lg",
     alt: ""
   })))));
 }
@@ -28693,15 +28693,18 @@ __webpack_require__.r(__webpack_exports__);
     className: "mt-10"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "-mx-2 border border-gray-700 lg-mx-8"
-  }, contents.map(function (content) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, contents.map(function (content, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "px-4 py-4 bg-gray-700 lg:px-8"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
       className: "text-base font-semibold text-gray-100 lg:text-lg"
     }, content.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "px-4 py-2 border-t border-gray-700 lg:px-8 "
-    }, content.videos.map(function (video) {
+    }, content.videos.map(function (video, index) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        key: index,
         className: "flex flex-wrap items-center my-4 lg:flex-no-wrap"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "flex w-full my-2 lg:my-0"
@@ -28714,15 +28717,15 @@ __webpack_require__.r(__webpack_exports__);
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "font-medium text-gray-500"
       }, video.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "flex w-1/2 lg:w-32"
+        className: "flex w-1/2 lg:w-32"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-        "class": "w-6 h-6 mr-4 text-blue-600 fill-current",
+        className: "w-6 h-6 mr-4 text-blue-600 fill-current",
         viewBox: "0 0 25 25",
         xmlns: "http://www.w3.org/2000/svg"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
         d: "M24.918 12.548C24.884 19.635 19.364 25.04 12.197 25 5.454 24.96-.033 19.32 0 12.452.033 5.365 5.553-.04 12.72 0c6.74.043 12.228 5.688 12.197 12.548zM14.16 8.654c0-1.082-.013-2.164 0-3.245.011-.725-.359-1.056-1.04-1.095-.36-.02-.718 0-1.082-.013-.883-.02-1.322.348-1.298 1.298.041 1.514 0 3.029.013 4.543.067 4.76-.649 3.526 3.3 6.464 1.607 1.196 1.648 1.157 2.89-.409.605-.763.638-1.436-.243-1.852-2.297-1.081-2.957-2.89-2.546-5.252.015-.15.018-.3.006-.45v.01z"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        "class": "font-medium text-gray-500 whitespace-no-wrap"
+        className: "font-medium text-gray-500 whitespace-no-wrap"
       }, video.minute)), video.link ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "flex w-1/2 pl-2 lg:w-40 "
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -28771,7 +28774,7 @@ __webpack_require__.r(__webpack_exports__);
   }, "In Depth Reactjs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "mt-2 mb-8 text-lg text-gray-600 lg:text-2xl"
   }, "A Practical Course that combine all React World"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: true,
+    href: "#",
     className: "inline-block px-4 py-2 font-bold text-white align-middle bg-blue-600 rounded-full hover:bg-blue-700"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Enroll to Course"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 25 25",
@@ -28861,8 +28864,9 @@ __webpack_require__.r(__webpack_exports__);
     className: "text-lg font-bold text-gray-100 lg:text-2xl"
   }, "Features of the course")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
-  }, features.map(function (feature) {
+  }, features.map(function (feature, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Feature__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: index,
       value: feature
     });
   })));
@@ -28897,7 +28901,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "mb-6 md:mb-0"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "images/what_you_learn.jpg",
-    className: "rounded-lg ",
+    className: "m-auto rounded-lg",
     alt: ""
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "md:w-1/2"
@@ -28957,7 +28961,7 @@ function Index() {
   }, "Moneyback Guarentee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "text-base font-medium text-gray-600"
   }, "Unlimited Access for LIFETIME")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: true,
+    href: "#",
     className: "inline-block px-4 py-2 font-bold text-white align-middle bg-blue-600 rounded-full hover:bg-blue-700"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Buy Now"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 25 25",
@@ -29086,7 +29090,7 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "flex flex-wrap items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "md:pr-8 md:w-2/3"
+    className: "w-full md:pr-8 md:w-2/3 "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "text-lg font-bold text-gray-100 lg:text-2xl"
   }, "In Depth Reactjs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -29096,7 +29100,7 @@ __webpack_require__.r(__webpack_exports__);
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "text-base font-medium leading-6 text-gray-100"
   }, "Get early discount & latest news \uD83D\uDC47"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    action: true,
+    action: "#",
     className: "my-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "block w-full px-4 py-3 mb-3 leading-tight bg-gray-700 border border-gray-500 rounded-lg appearance-none focus:outline-none focus:bg-white",
@@ -29120,12 +29124,12 @@ __webpack_require__.r(__webpack_exports__);
     clipRule: "evenodd",
     d: "M12.222 24.444c6.75 0 12.222-5.472 12.222-12.222C24.444 5.472 18.972 0 12.222 0 5.472 0 0 5.472 0 12.222c0 6.75 5.472 12.222 12.222 12.222zM13.28 6.138l6.002 5.92a.916.916 0 010 1.307l-6.001 5.92a.942.942 0 01-.663.27c-.24 0-.48-.09-.664-.27v-5.648H5.826a.932.932 0 01-.937-.926c0-.51.42-.925.937-.925h6.127v-4.34c0-.125-.003-.27-.007-.422-.009-.32-.018-.666.007-.886a.947.947 0 011.326 0z"
   }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "md:w-1/3"
+    className: "w-full md:w-1/3 "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mt-6 mt:mb-0"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "images/news_letter.jpg",
-    className: "rounded-lg ",
+    className: "m-auto rounded-lg",
     alt: ""
   })))));
 });
@@ -29165,7 +29169,7 @@ function Index() {
   }, "\uD83E\uDDD0 They always say \"build to learn\". They never say what to build! These 20 apps are fun projects that will introduce us to coding scenarios that we'll encounter in many React apps."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "my-5 text-lg leading-6 text-gray-500 lg:text-xl"
   }, "Not sure if you'll like the course? Full refund if you end up not liking anything.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: true,
+    href: "#",
     className: "inline-block px-4 py-2 font-bold text-white align-middle bg-blue-600 rounded-full hover:bg-blue-700"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "View the 20 Apps"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     viewBox: "0 0 25 25",
@@ -29176,12 +29180,12 @@ function Index() {
     clipRule: "evenodd",
     d: "M12.222 24.444c6.75 0 12.222-5.472 12.222-12.222C24.444 5.472 18.972 0 12.222 0 5.472 0 0 5.472 0 12.222c0 6.75 5.472 12.222 12.222 12.222zM13.28 6.138l6.002 5.92a.916.916 0 010 1.307l-6.001 5.92a.942.942 0 01-.663.27c-.24 0-.48-.09-.664-.27v-5.648H5.826a.932.932 0 01-.937-.926c0-.51.42-.925.937-.925h6.127v-4.34c0-.125-.003-.27-.007-.422-.009-.32-.018-.666.007-.886a.947.947 0 011.326 0z"
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "md:pl-8 lg:pl-24 md:w-1/2"
+    className: "w-full md:pl-8 lg:pl-24 md:w-1/2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mt-6 mt:mb-0"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "images/who_is_this_for.jpg",
-    className: "rounded-lg ",
+    className: "m-auto rounded-lg",
     alt: ""
   })))));
 }
