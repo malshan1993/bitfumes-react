@@ -21,7 +21,7 @@ export default function() {
                 </svg>
             </div>
             <div>
-                <h1 className="text-2xl text-gray-100 lg-text-5xl">
+                <h1 className="text-2xl text-gray-100 lg:text-5xl">
                     In Depth Reactjs
                 </h1>
                 <p className="mt-2 mb-8 text-lg text-gray-600 lg:text-2xl">
@@ -29,7 +29,7 @@ export default function() {
                 </p>
                 <a
                     href="#"
-                    className="inline-block px-4 py-2 font-bold text-white align-middle bg-blue-600 rounded-full hover:bg-blue-700"
+                    className="inline-block px-4 py-2 font-bold text-white align-middle rounded-full shadow-md bg-gradient-to-r from-purple-400 to-blue-600"
                 >
                     <span>Enroll to Course</span>
                     <svg

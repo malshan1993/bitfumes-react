@@ -34,7 +34,7 @@ export default function() {
                             <div className="mt-10">
                                 <button
                                     type="submit"
-                                    className="inline-block px-4 py-2 font-bold text-white bg-blue-600 rounded-full hover:bg-blue-700"
+                                    className="inline-block px-4 py-2 font-bold text-white rounded-full bg-gradient-to-r from-purple-400 to-blue-600"
                                 >
                                     <span>Subscribe Now</span>
                                     <svg

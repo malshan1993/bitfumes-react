@@ -9,28 +9,28 @@ export default function Index() {
                         Who is this for?
                     </h1>
                     <div className="my-8 ">
-                        <p className="my-5 text-lg leading-6 text-gray-500 lg:text-xl">
+                        <p className="my-5 text-lg leading-6 text-gray-500 lg:text-lg">
                             This course is for beginner-intermediate developers
                             that want to learn by building.
                         </p>
-                        <p className="my-5 text-lg leading-6 text-gray-500 lg:text-xl">
+                        <p className="my-5 text-lg leading-6 text-gray-500 lg:text-lg">
                             It's great for those that have some React knowledge
                             but want to create real-world code.
                         </p>
-                        <p className="my-5 text-lg leading-6 text-gray-500 lg:text-xl">
+                        <p className="my-5 text-lg leading-6 text-gray-500 lg:text-lg">
                             🧐 They always say "build to learn". They never say
                             what to build! These 20 apps are fun projects that
                             will introduce us to coding scenarios that we'll
                             encounter in many React apps.
                         </p>
-                        <p className="my-5 text-lg leading-6 text-gray-500 lg:text-xl">
+                        <p className="my-5 text-lg leading-6 text-gray-500 lg:text-lg">
                             Not sure if you'll like the course? Full refund if
                             you end up not liking anything.
                         </p>
                     </div>
                     <a
                         href="#"
-                        className="inline-block px-4 py-2 font-bold text-white align-middle bg-blue-600 rounded-full hover:bg-blue-700"
+                        className="inline-block px-4 py-2 font-bold text-white align-middle rounded-full bg-gradient-to-r from-purple-400 to-blue-600"
                     >
                         <span>View the 20 Apps</span>
                         <svg

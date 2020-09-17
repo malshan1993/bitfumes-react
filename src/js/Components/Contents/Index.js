@@ -44,7 +44,7 @@ export default function() {
                     {contents.map((content, index) => {
                         return (
                             <div key={index}>
-                                <div className="px-4 py-4 bg-gray-700 lg:px-8">
+                                <div className="px-4 py-4 bg-gray-700 lg:px-8 bg-gradient-to-r from-purple-400 to-blue-600">
                                     <h5 className="text-base font-semibold text-gray-100 lg:text-lg">
                                         {content.title}
                                     </h5>
@@ -84,7 +84,7 @@ export default function() {
                                                     <div className="flex w-1/2 pl-2 lg:w-40 ">
                                                         <button
                                                             type="submit"
-                                                            className="inline-block px-4 py-2 text-sm font-medium text-white whitespace-no-wrap bg-blue-600 rounded-full hover:bg-blue-700"
+                                                            className="inline-block px-4 py-2 text-sm font-medium text-white whitespace-no-wrap rounded-full bg-gradient-to-r from-purple-400 to-blue-600"
                                                         >
                                                             Watch Preview
                                                         </button>
