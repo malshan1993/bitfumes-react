@@ -25395,6 +25395,238 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-tilt/dist/tilt.js":
+/*!**********************************************!*\
+  !*** ./node_modules/react-tilt/dist/tilt.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Tilt = function (_Component) {
+  _inherits(Tilt, _Component);
+
+  function Tilt(props) {
+    _classCallCheck(this, Tilt);
+
+    var _this = _possibleConstructorReturn(this, (Tilt.__proto__ || Object.getPrototypeOf(Tilt)).call(this, props));
+
+    _this.state = {
+      style: {}
+    };
+
+    var defaultSettings = {
+      reverse: false,
+      max: 35,
+      perspective: 1000,
+      easing: "cubic-bezier(.03,.98,.52,.99)",
+      scale: "1.1",
+      speed: "1000",
+      transition: true,
+      axis: null,
+      reset: true
+    };
+
+    _this.width = null;
+    _this.height = null;
+    _this.left = null;
+    _this.top = null;
+    _this.transitionTimeout = null;
+    _this.updateCall = null;
+    _this.element = null;
+    _this.settings = Object.assign({}, defaultSettings, _this.props.options);
+    _this.reverse = _this.settings.reverse ? -1 : 1;
+
+    // Events
+    _this.onMouseEnter = _this.onMouseEnter.bind(_this, _this.props.onMouseEnter);
+    _this.onMouseMove = _this.onMouseMove.bind(_this, _this.props.onMouseMove);
+    _this.onMouseLeave = _this.onMouseLeave.bind(_this, _this.props.onMouseLeave);
+    return _this;
+  }
+
+  _createClass(Tilt, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.element = (0, _reactDom.findDOMNode)(this);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearTimeout(this.transitionTimeout);
+      cancelAnimationFrame(this.updateCall);
+    }
+  }, {
+    key: 'onMouseEnter',
+    value: function onMouseEnter() {
+      var cb = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
+      var e = arguments[1];
+
+      this.updateElementPosition();
+
+      this.setState(Object.assign({}, this.state, {
+        style: _extends({}, this.state.style, {
+          willChange: "transform"
+        })
+      }));
+
+      this.setTransition();
+
+      return cb(e);
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      var _this2 = this;
+
+      window.requestAnimationFrame(function () {
+        _this2.setState(Object.assign({}, _this2.state, {
+          style: _extends({}, _this2.state.style, {
+            transform: "perspective(" + _this2.settings.perspective + "px) " + "rotateX(0deg) " + "rotateY(0deg) " + "scale3d(1, 1, 1)" })
+        }));
+      });
+    }
+  }, {
+    key: 'onMouseMove',
+    value: function onMouseMove() {
+      var cb = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
+      var e = arguments[1];
+
+      e.persist();
+
+      if (this.updateCall !== null) {
+        window.cancelAnimationFrame(this.updateCall);
+      }
+
+      this.event = e;
+      this.updateCall = requestAnimationFrame(this.update.bind(this, e));
+
+      return cb(e);
+    }
+  }, {
+    key: 'setTransition',
+    value: function setTransition() {
+      var _this3 = this;
+
+      clearTimeout(this.transitionTimeout);
+
+      this.setState(Object.assign({}, this.state, {
+        style: _extends({}, this.state.style, {
+          transition: this.settings.speed + "ms " + this.settings.easing
+        })
+      }));
+
+      this.transitionTimeout = setTimeout(function () {
+        _this3.setState(Object.assign({}, _this3.state, {
+          style: _extends({}, _this3.state.style, {
+            transition: ''
+          })
+        }));
+      }, this.settings.speed);
+    }
+  }, {
+    key: 'onMouseLeave',
+    value: function onMouseLeave() {
+      var cb = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
+      var e = arguments[1];
+
+      this.setTransition();
+
+      if (this.settings.reset) {
+        this.reset();
+      }
+      return cb(e);
+    }
+  }, {
+    key: 'getValues',
+    value: function getValues(e) {
+      var x = (e.nativeEvent.clientX - this.left) / this.width;
+      var y = (e.nativeEvent.clientY - this.top) / this.height;
+      var _x = Math.min(Math.max(x, 0), 1);
+      var _y = Math.min(Math.max(y, 0), 1);
+
+      var tiltX = (this.reverse * (this.settings.max / 2 - _x * this.settings.max)).toFixed(2);
+      var tiltY = (this.reverse * (_y * this.settings.max - this.settings.max / 2)).toFixed(2);
+
+      var percentageX = _x * 100;
+      var percentageY = _y * 100;
+
+      return {
+        tiltX: tiltX,
+        tiltY: tiltY,
+        percentageX: percentageX,
+        percentageY: percentageY
+      };
+    }
+  }, {
+    key: 'updateElementPosition',
+    value: function updateElementPosition() {
+      var rect = this.element.getBoundingClientRect();
+      this.width = this.element.offsetWidth;
+      this.height = this.element.offsetHeight;
+      this.left = rect.left;
+      this.top = rect.top;
+    }
+  }, {
+    key: 'update',
+    value: function update(e) {
+      var values = this.getValues(e);
+
+      this.setState(Object.assign({}, this.state, {
+        style: _extends({}, this.state.style, {
+          transform: "perspective(" + this.settings.perspective + "px) " + "rotateX(" + (this.settings.axis === "x" ? 0 : values.tiltY) + "deg) " + "rotateY(" + (this.settings.axis === "y" ? 0 : values.tiltX) + "deg) " + "scale3d(" + this.settings.scale + ", " + this.settings.scale + ", " + this.settings.scale + ")"
+        })
+      }));
+
+      this.updateCall = null;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var style = Object.assign({}, this.props.style, this.state.style);
+      return _react2.default.createElement(
+        'div',
+        { style: style,
+          className: this.props.className,
+          onMouseEnter: this.onMouseEnter,
+          onMouseMove: this.onMouseMove,
+          onMouseLeave: this.onMouseLeave
+        },
+        this.props.children
+      );
+    }
+  }]);
+
+  return Tilt;
+}(_react.Component);
+
+exports.default = Tilt;
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -28616,7 +28848,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function Index() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 mt-10 bg-gray-800 rounded lg:px-20 lg:py-16 lg:mt-20 bg-gradient-to-r from-purple-900 to-blue-900"
+    className: "px-6 py-8 mt-10 bg-gray-800 rounded shadow-lg lg:px-20 lg:py-16 lg:mt-20 bg-gradient-to-r from-purple-900 to-blue-900"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "flex flex-wrap items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -28686,7 +28918,7 @@ __webpack_require__.r(__webpack_exports__);
     }]
   }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 mt-10 bg-gray-800 rounded lg:px-20 lg:py-16 lg:mt-20"
+    className: "px-6 py-8 mt-10 bg-gray-800 rounded shadow-lg lg:px-20 lg:py-16 lg:mt-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "text-lg font-bold text-gray-100 lg:text-2xl"
   }, "Table of Contents"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -28752,7 +28984,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 text-center bg-gray-800 bg-center bg-cover rounded lg:p-10",
+    className: "px-6 py-8 text-center bg-gray-800 bg-center bg-cover rounded shadow-lg lg:p-10",
     style: {
       backgroundImage: 'url("./images/react_cover.png")'
     }
@@ -28857,7 +29089,7 @@ __webpack_require__.r(__webpack_exports__);
     icon: "fa-certificate"
   }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 mt-10 bg-gray-800 rounded lg:mt-20 lg:py-16 lg:px-20 "
+    className: "px-6 py-8 mt-10 bg-gray-800 rounded shadow-lg lg:mt-20 lg:py-16 lg:px-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mb-10 font-bold text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -28888,7 +29120,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 mt-10 bg-gray-800 rounded lg:px-20 lg:py-16 lg:mt-20 bg-gradient-to-r from-purple-900 to-blue-900"
+    className: "px-6 py-8 mt-10 bg-gray-800 rounded shadow-lg lg:px-20 lg:py-16 lg:mt-20 bg-gradient-to-r from-purple-900 to-blue-900"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "flex flex-wrap"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -28925,7 +29157,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function Index() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 mt-10 text-center bg-gray-800 bg-center bg-cover rounded lg:px-20 lg:py-16 lg:mt-20",
+    className: "px-6 py-8 mt-10 text-center bg-gray-800 bg-center bg-cover rounded shadow-lg lg:px-20 lg:py-16 lg:mt-20",
     style: {
       backgroundImage: 'url("./images/react_cover.png")'
     }
@@ -28990,7 +29222,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 mt-10 bg-gray-800 rounded lg:px-20 lg:py-16 lg:mt-20"
+    className: "px-6 py-8 mt-10 bg-gray-800 rounded shadow-lg lg:px-20 lg:py-16 lg:mt-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "text-lg font-bold text-gray-100 lg:text-2xl"
   }, "Hear from people about this course \uD83D\uDC47"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -29050,7 +29282,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 mt-10 bg-gray-800 rounded lg:px-20 lg:py-16 lg:mt-20"
+    className: "px-6 py-8 mt-10 bg-gray-800 rounded shadow-lg lg:px-20 lg:py-16 lg:mt-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "text-lg font-bold text-gray-100 lg:text-2xl"
   }, "All Your questions are answered here."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -29086,7 +29318,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 mt-10 bg-gray-800 rounded lg:px-20 lg:py-16 lg:mt-20"
+    className: "px-6 py-8 mt-10 bg-gray-800 rounded shadow-lg lg:px-20 lg:py-16 lg:mt-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "flex flex-wrap items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -29151,7 +29383,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function Index() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "px-6 py-8 mt-10 bg-gray-800 rounded lg:px-20 lg:py-16 lg:mt-20"
+    className: "px-6 py-8 mt-10 bg-gray-800 rounded shadow-lg lg:px-20 lg:py-16 lg:mt-20"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "flex flex-wrap items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -29205,16 +29437,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Components_Cover__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components/Cover */ "./src/js/Components/Cover/index.js");
-/* harmony import */ var _Components_Feature__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/Feature */ "./src/js/Components/Feature/index.js");
-/* harmony import */ var _Components_Learn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Components/Learn */ "./src/js/Components/Learn/index.js");
-/* harmony import */ var _Components_Who__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Components/Who */ "./src/js/Components/Who/index.js");
-/* harmony import */ var _Components_Contents__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Components/Contents */ "./src/js/Components/Contents/index.js");
-/* harmony import */ var _Components_People__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Components/People */ "./src/js/Components/People/index.js");
-/* harmony import */ var _Components_About__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Components/About */ "./src/js/Components/About/index.js");
-/* harmony import */ var _Components_Questions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Components/Questions */ "./src/js/Components/Questions/index.js");
-/* harmony import */ var _Components_Payment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Components/Payment */ "./src/js/Components/Payment/index.js");
-/* harmony import */ var _Components_Subscribe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Components/Subscribe */ "./src/js/Components/Subscribe/index.js");
+/* harmony import */ var react_tilt__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-tilt */ "./node_modules/react-tilt/dist/tilt.js");
+/* harmony import */ var react_tilt__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_tilt__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Components_Cover__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/Cover */ "./src/js/Components/Cover/index.js");
+/* harmony import */ var _Components_Feature__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Components/Feature */ "./src/js/Components/Feature/index.js");
+/* harmony import */ var _Components_Learn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Components/Learn */ "./src/js/Components/Learn/index.js");
+/* harmony import */ var _Components_Who__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Components/Who */ "./src/js/Components/Who/index.js");
+/* harmony import */ var _Components_Contents__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Components/Contents */ "./src/js/Components/Contents/index.js");
+/* harmony import */ var _Components_People__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Components/People */ "./src/js/Components/People/index.js");
+/* harmony import */ var _Components_About__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Components/About */ "./src/js/Components/About/index.js");
+/* harmony import */ var _Components_Questions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Components/Questions */ "./src/js/Components/Questions/index.js");
+/* harmony import */ var _Components_Payment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Components/Payment */ "./src/js/Components/Payment/index.js");
+/* harmony import */ var _Components_Subscribe__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Components/Subscribe */ "./src/js/Components/Subscribe/index.js");
+
 
 
 
@@ -29229,7 +29464,67 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Cover__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Feature__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Learn__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Who__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Contents__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_People__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_About__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Questions__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Payment__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Subscribe__WEBPACK_IMPORTED_MODULE_11__["default"], null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Cover__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Feature__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Learn__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Who__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Contents__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_People__WEBPACK_IMPORTED_MODULE_8__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_About__WEBPACK_IMPORTED_MODULE_9__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Questions__WEBPACK_IMPORTED_MODULE_10__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Payment__WEBPACK_IMPORTED_MODULE_11__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_tilt__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: "Tilt",
+    options: {
+      max: 2,
+      scale: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Subscribe__WEBPACK_IMPORTED_MODULE_12__["default"], null)));
 };
 
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById("root"));

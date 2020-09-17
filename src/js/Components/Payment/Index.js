@@ -3,7 +3,7 @@ import React from "react";
 export default function Index() {
     return (
         <div
-            className="px-6 py-8 mt-10 text-center bg-gray-800 bg-center bg-cover rounded lg:px-20 lg:py-16 lg:mt-20"
+            className="px-6 py-8 mt-10 text-center bg-gray-800 bg-center bg-cover rounded shadow-lg lg:px-20 lg:py-16 lg:mt-20"
             style={{ backgroundImage: 'url("./images/react_cover.png")' }}
         >
             <h1 className="text-2xl text-gray-100 lg:text-5xl">Get It Now</h1>

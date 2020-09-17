@@ -39,7 +39,7 @@ export default function() {
     ];
 
     return (
-        <div className="px-6 py-8 mt-10 bg-gray-800 rounded lg:mt-20 lg:py-16 lg:px-20 ">
+        <div className="px-6 py-8 mt-10 bg-gray-800 rounded shadow-lg lg:mt-20 lg:py-16 lg:px-20">
             <div className="mb-10 font-bold text-center">
                 <h1 className="text-lg font-bold text-gray-100 lg:text-2xl">
                     Features of the course

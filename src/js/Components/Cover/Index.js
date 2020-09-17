@@ -3,7 +3,7 @@ import React from "react";
 export default function() {
     return (
         <div
-            className="px-6 py-8 text-center bg-gray-800 bg-center bg-cover rounded lg:p-10"
+            className="px-6 py-8 text-center bg-gray-800 bg-center bg-cover rounded shadow-lg lg:p-10"
             style={{ backgroundImage: 'url("./images/react_cover.png")' }}
         >
             <div className="py-5">
